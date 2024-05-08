@@ -3,7 +3,25 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
-
+const gitHubData = {
+    "name": "chaideploy",
+    "version": "1.0.0",
+    "description": "a basic app to deploy second video",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "keywords": [
+        "node",
+        "chai"
+    ],
+    "author": "uday",
+    "license": "ISC",
+    "dependencies": {
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2"
+    }
+};
 
 app.get('/', (req, res) => {
     res.send('Hello World! chai aur code');
@@ -80,5 +98,12 @@ app.get('/login', (req, res) => {
     </html>`);
 });
 
+// Route to get GitHub data
+app.get("/gitHubData", (req, res) => {
+    res.json(gitHubData);
+});
 
-console.log("chai aur code");
+// Listen to the port
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
